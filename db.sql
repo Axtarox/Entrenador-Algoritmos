@@ -4,7 +4,7 @@ USE algorithm_trainer;
 
 
 CREATE TABLE USUARIO (
-    id INT PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(50),
     correo VARCHAR(100),
     contrasena VARCHAR(50),
@@ -12,7 +12,7 @@ CREATE TABLE USUARIO (
 );
 
 CREATE TABLE ESTUDIANTE (
-    usuario_id INT PRIMARY KEY,
+    usuario_id INT AUTO_INCREMENT PRIMARY KEY,
     institucion_educativa VARCHAR(100),
     nivel_estudios VARCHAR(50),
     nivel_entrenamiento INT,
@@ -21,15 +21,16 @@ CREATE TABLE ESTUDIANTE (
 );
 
 
+
 CREATE TABLE PROFESOR (
-    usuario_id INT PRIMARY KEY,
+    usuario_id INT AUTO_INCREMENT PRIMARY KEY,
     institucion_educativa VARCHAR(100),
     nivel_estudios VARCHAR(50),
     FOREIGN KEY (usuario_id) REFERENCES USUARIO(id)
 );
 
 CREATE TABLE ADMINISTRADOR (
-    usuario_id INT PRIMARY KEY,
+    usuario_id INT AUTO_INCREMENT PRIMARY KEY,
     FOREIGN KEY (usuario_id) REFERENCES USUARIO(id)
 );
 

@@ -22,6 +22,7 @@ document.getElementById('loginForm')?.addEventListener('submit', async (e) => {
 // Manejo del formulario de registro
 document.getElementById('registerForm')?.addEventListener('submit', async (e) => {
     e.preventDefault();
+
     const name = document.getElementById('name').value.trim();
     const email = document.getElementById('email').value.trim();
     const password = document.getElementById('password').value.trim();
@@ -31,6 +32,6 @@ document.getElementById('registerForm')?.addEventListener('submit', async (e) =>
         alert('Registro exitoso. Ahora puedes iniciar sesión.');
         window.location.href = '/login';
     } catch (error) {
-        alert(`Error al registrarse: ${error.message}`);
+        alert(`Error en el registro: ${error.message}`);
     }
 });
