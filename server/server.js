@@ -25,6 +25,9 @@ app.get('/login', (req, res) => {
 app.get('/register', (req, res) => {
     res.sendFile(path.join(__dirname, '../client/public/views/register.html'));
 });
+app.get('/dashboard', (req, res) => {
+    res.sendFile(path.join(__dirname, '../client/public/views/dashboard.html'));
+});
 
 // Manejo de rutas no encontradas (404) con mensaje de error en JSON
 app.use((req, res) => {

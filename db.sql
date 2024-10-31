@@ -7,30 +7,32 @@ CREATE TABLE USUARIO (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(50),
     correo VARCHAR(100),
-    contrasena VARCHAR(50),
+    contrasena VARCHAR(255), 
     tipo ENUM('estudiante', 'profesor', 'administrador')
 );
 
+
 CREATE TABLE ESTUDIANTE (
-    usuario_id INT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id INT PRIMARY KEY,
     institucion_educativa VARCHAR(100),
     nivel_estudios VARCHAR(50),
-    nivel_entrenamiento INT,
-    porcentaje_completado FLOAT,
+    nivel_entrenamiento INT DEFAULT 1,
+    porcentaje_completado FLOAT DEFAULT 0.0,
     FOREIGN KEY (usuario_id) REFERENCES USUARIO(id)
 );
 
 
 
+
 CREATE TABLE PROFESOR (
-    usuario_id INT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id INT  PRIMARY KEY,
     institucion_educativa VARCHAR(100),
     nivel_estudios VARCHAR(50),
     FOREIGN KEY (usuario_id) REFERENCES USUARIO(id)
 );
 
 CREATE TABLE ADMINISTRADOR (
-    usuario_id INT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id INT  PRIMARY KEY,
     FOREIGN KEY (usuario_id) REFERENCES USUARIO(id)
 );
 

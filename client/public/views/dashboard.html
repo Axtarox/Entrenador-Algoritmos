@@ -4,20 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Entrenador de Algoritmos</title>
-    <link rel="stylesheet" href="/css/styles.css"> <!-- Ruta al CSS corregida -->
-    <script src="/js/auth.js" type="module" defer></script> <!-- Ruta al JavaScript corregida -->
-    <script src="/js/api.js" type="module" defer></script>
+    <link rel="stylesheet" href="/css/styles.css"> <!-- Ruta del CSS -->
+    <script src="/js/modules.js" type="module" defer></script> <!-- Script específico del Dashboard -->
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>Bienvenido al Dashboard</h1>
+            <h1>Bienvenido al Panel Principal</h1>
             <button id="logoutBtn" class="btn">Cerrar Sesión</button> <!-- Botón de cierre de sesión -->
         </header>
+
         <main>
-            <p>Estás en una página protegida. Solo los usuarios autenticados pueden verla.</p>
+            <div class="dashboard-header">
+                <h2>Bienvenido, Estudiante</h2>
+                <p>Explora los módulos y sigue tu progreso.</p>
+            </div>
+            
+            <section class="module-grid" id="moduleGrid">
+                <!-- Los módulos se cargarán aquí dinámicamente mediante JavaScript -->
+            </section>
         </main>
     </div>
+
+    <script src="/js/api.js" type="module" defer></script> <!-- Cliente API para comunicación con backend -->
 </body>
 </html>
 
