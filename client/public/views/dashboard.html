@@ -16,17 +16,36 @@
 
         <main>
             <div class="dashboard-header">
-                <h2>Bienvenido, Estudiante</h2>
-                <p>Explora los módulos y sigue tu progreso.</p>
+                <h2>Selecciona tu Nivel</h2>
+                <p>Por favor, elige un nivel para comenzar a explorar los módulos.</p>
             </div>
             
             <section class="module-grid" id="moduleGrid">
-                <!-- Los módulos se cargarán aquí dinámicamente mediante JavaScript -->
+                <div class="module-card" id="basicLevel">
+                    <h3>Nivel Básico</h3>
+                    <p>Inicia con los conceptos fundamentales.</p>
+                    <button class="level-btn" onclick="redirectToModules('basic')">Seleccionar Nivel Básico</button>
+                </div>
+                
+                <div class="module-card" id="intermediateLevel">
+                    <h3>Nivel Intermedio</h3>
+                    <p>Profundiza en temas más avanzados.</p>
+                    <button class="level-btn" onclick="redirectToModules('intermediate')">Seleccionar Nivel Intermedio</button>
+                </div>
             </section>
         </main>
     </div>
 
     <script src="/js/api.js" type="module" defer></script> <!-- Cliente API para comunicación con backend -->
+    <script>
+        // Función para redirigir a la vista de módulos correspondiente
+        function redirectToModules(level) {
+            if (level === 'basic') {
+                window.location.href = '/modules/basic.html'; // Cambia esta ruta a tu vista de módulos básicos
+            } else if (level === 'intermediate') {
+                window.location.href = '/modules/intermediate.html'; // Cambia esta ruta a tu vista de módulos intermedios
+            }
+        }
+    </script>
 </body>
 </html>
-
