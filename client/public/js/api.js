@@ -52,28 +52,43 @@ export const registerUser = async (name, email, password, institucionEducativa, 
     }
 };
 
-
-
-// Obtiene el progreso de los módulos del estudiante
-export const getModulesProgress = async () => {
+export const getModulesByLevel = async (nivel) => {
+    const token = localStorage.getItem('token');
     try {
-        const response = await fetch('/api/modules/progress', {
+        const response = await fetch(`/api/modules/${nivel}`, {
             method: 'GET',
             headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('token')}` // Token de autenticación
+                'Authorization': `Bearer ${token}`
             }
         });
 
         if (!response.ok) {
-            const errorData = await response.json();
-            throw new Error(errorData.message || 'Error al obtener el progreso de los módulos');
+            throw new Error('Error al obtener los módulos');
         }
 
-        const modules = await response.json();
-        return modules;
+        return await response.json();
     } catch (error) {
-        console.error('Error en getModulesProgress:', error.message || error);
-        throw new Error(error.message || 'Error de red al obtener progreso de módulos');
+        console.error('Error en getModulesByLevel:', error);
+        throw error;
+    }
+};
+export const getModuleDetails = async (moduleId) => {
+    const token = localStorage.getItem('token');
+    try {
+        const response = await fetch(`/api/module/${moduleId}`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error('Error al obtener los detalles del módulo');
+        }
+
+        return await response.json();
+    } catch (error) {
+        console.error('Error en getModuleDetails:', error);
+        throw error;
     }
 };

@@ -3,23 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modulo</title>
-    <link rel="stylesheet" href="/css/styles.css">
+    <title>Módulos</title>
+    <link rel="stylesheet" href="/css/styles.css"> <!-- Ruta del CSS -->
+    <script src="/js/modules.js" type="module" defer></script> 
+    <script src="/js/api.js" type="module" defer></script>    
 </head>
 <body>
-    <header>
-        <h1>Detalles del Módulo</h1>
-    </header>
-    <main>
-        <section id="moduleDetails">
-            <h2>Nombre del Módulo</h2>
-            <p>Descripción del Módulo</p>
-        </section>
-        <section id="moduleExercises">
-            <h2>Ejercicios</h2>
-            <ul id="exerciseList"></ul>
-        </section>
-    </main>
-    <script src="/js/modules.js"></script>
+    <div class="container">
+        <header>
+            <h1>Módulos de Algoritmos</h1>
+            <button id="logoutBtn" class="btn">Cerrar Sesión</button> <!-- Botón de cierre de sesión -->
+        </header>
+
+        <main>
+            <div class="dashboard-header">
+                <h2 id="levelTitle">Módulos</h2>
+                <p id="levelDescription">Selecciona un módulo para comenzar tu entrenamiento.</p>
+            </div>
+            
+            <section class="module-grid" id="moduleGrid">
+                <!-- Los módulos se cargarán aquí dinámicamente mediante JavaScript -->
+            </section>
+        </main>
+    </div>
 </body>
 </html>

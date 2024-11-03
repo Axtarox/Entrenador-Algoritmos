@@ -1,7 +1,7 @@
 const express = require('express');
-const modulesController = require('../controllers/modules');
 const router = express.Router();
+const moduleController = require('../controllers/modules');
 
-router.get('/progress', modulesController.getModulesProgress);
+router.get('/:nivel', moduleController.getModulesByLevel);
 
 module.exports = router;

@@ -3,9 +3,10 @@ const db = require('../config/database');
 const Module = {
     async getModulesProgress(userId) {
         const [rows] = await db.query(
-            `SELECT name, progress FROM MODULES 
-            INNER JOIN USER_PROGRESS ON MODULES.id = USER_PROGRESS.module_id 
-            WHERE USER_PROGRESS.user_id = ?`,
+            `SELECT M.nombre AS name, E.porcentaje_completado AS progress
+            FROM MODULO M
+            JOIN ESTUDIANTE E ON E.nivel_entrenamiento = M.nivel
+            WHERE E.usuario_id = ?`,
             [userId]
         );
         return rows;

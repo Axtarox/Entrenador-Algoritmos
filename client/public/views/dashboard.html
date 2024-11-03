@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Entrenador de Algoritmos</title>
     <link rel="stylesheet" href="/css/styles.css"> <!-- Ruta del CSS -->
-    <script src="/js/modules.js" type="module" defer></script> <!-- Script específico del Dashboard -->
 </head>
 <body>
     <div class="container">
@@ -38,14 +37,19 @@
 
     <script src="/js/api.js" type="module" defer></script> <!-- Cliente API para comunicación con backend -->
     <script>
-        // Función para redirigir a la vista de módulos correspondiente
+        // Función para redirigir a la vista unificada de módulos correspondiente
         function redirectToModules(level) {
-            if (level === 'basic') {
-                window.location.href = '/modules/basic.html'; // Cambia esta ruta a tu vista de módulos básicos
-            } else if (level === 'intermediate') {
-                window.location.href = '/modules/intermediate.html'; // Cambia esta ruta a tu vista de módulos intermedios
-            }
+            window.location.href = `/modulos/${level}`; // Nueva ruta para la vista unificada de módulos
         }
+
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+            localStorage.removeItem('token');  
+            window.location.href = '/login';   
+        });
     </script>
 </body>
 </html>
+console.log('Redirecting to modules view...');
+console.log(`Selected level: ${level}`);
+console.log('Removing token from local storage...');
+console.log('Redirecting to login page...');

@@ -10,11 +10,16 @@ body {
 }
 
 .container {
-    max-width: 600px;
+    max-width: 500px;
     margin: 0 auto;
     padding: 20px;
 }
 
+.container-broad {
+    max-width: 750px;
+    margin: 0 auto;
+    padding: 20px;
+}
 
 .title {
     color: #1a73e8;
@@ -23,10 +28,10 @@ body {
     border-bottom: 2px solid #e0e0e0;
 }
 
-.init-form {
+/*.init-form {
     max-width: 400px;
     margin: 0 auto;
-}
+}*/
 
 .form-group {
     margin-bottom: 15px;
@@ -65,24 +70,33 @@ body {
     width: 15%;
 }
 
-/* Dashboard styles */
+
 .dashboard-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
 }
-
-.module-grid {
+.module-grid, .exercise-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
 }
 
-.module-card {
+.module-card, .exercise-card {
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 15px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Efecto hover para que las tarjetas se vean interactivas */
+.module-card:hover, .exercise-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f8f8f8;
 }
 
 .progress-bar {
@@ -99,7 +113,7 @@ body {
     width: 60%;
 }
 
-/* Exercise styles */
+/* Exercise styles
 .exercise-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
