@@ -2,7 +2,8 @@ const express = require('express');
 const path = require('path');
 const authRoutes = require('./routes/auth');
 const moduleRoutes = require('./routes/modules');
-const moduleDetailsRoutes = require('./routes/moduleDetail'); // Nueva importación para detalles del módulo
+const moduleDetailsRoutes = require('./routes/moduleDetail'); 
+const exercisesRoutes = require('./routes/exercises');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -23,6 +24,8 @@ app.use('/api/modules', moduleRoutes);
 // Rutas de detalles de módulos específicos (API) para obtener teoría y ejercicios del módulo
 app.use('/api/module', moduleDetailsRoutes);
 
+app.use('/api/exercises', exercisesRoutes);
+
 // Rutas para vistas HTML
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../client/public/views/index.html'));
@@ -36,7 +39,7 @@ app.get('/register', (req, res) => {
 app.get('/dashboard', (req, res) => {
     res.sendFile(path.join(__dirname, '../client/public/views/dashboard.html'));
 });
-router.get('/ejercicio/:id', (req, res) => {
+app.get('/ejercicio/:id', (req, res) => {
     res.sendFile(path.join(__dirname, '../client/public/views/exercise.html'));
 });
 

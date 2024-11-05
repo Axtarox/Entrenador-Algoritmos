@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio</title>
+    <link rel="stylesheet" href="/css/styles.css"> <!-- Ruta del CSS -->
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 id="exerciseTitle">Ejercicio: Título del Ejercicio</h1>
+        </header>
+        
+        <main>
+            <!-- Enunciado del ejercicio -->
+            <section class="exercise-statement">
+                <h2>Enunciado:</h2>
+                <p id="exerciseDescription">Descripción del ejercicio cargando...</p>
+            </section>
+
+            <!-- Área de código y botón de ejecución -->
+            <section class="code-editor">
+                <h3>Escribe tu código aquí</h3>
+                <textarea id="codeArea" rows="10" spellcheck="false">// Escribe tu código aquí</textarea>
+                <button id="executeButton" class="btn">Ejecutar</button>
+            </section>
+
+            <!-- Resultado de la ejecución -->
+            <section class="execution-result">
+                <h3>Resultado:</h3>
+                <pre id="outputArea"></pre>
+            </section>
+        </main>
+    </div>
+
+    <script src="/js/exercise.js" type="module"></script>
+</body>
+</html>
