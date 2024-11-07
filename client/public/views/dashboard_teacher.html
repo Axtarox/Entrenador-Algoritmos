@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Profesor - Entrenador de Algoritmos</title>
+    <link rel="stylesheet" href="/css/styles.css"> <!-- Ruta del CSS -->
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Bienvenido al Panel Principal del Profesor</h1>
+            <button id="logoutBtn" class="btn">Cerrar Sesión</button> <!-- Botón de cierre de sesión -->
+        </header>
+
+        <main>
+            <div class="dashboard-header">
+                <h2>Opciones Disponibles</h2>
+                <p>Selecciona un nivel, revisa el ranking o consulta la lista de estudiantes.</p>
+            </div>
+            
+            <!-- Sección de selección de niveles -->
+            <section class="module-grid" id="moduleGrid">
+                <div class="module-card" id="basicLevel">
+                    <h3>Nivel Básico</h3>
+                    <p>Inicia con los conceptos fundamentales.</p>
+                    <button class="level-btn" onclick="redirectToModules('basic')">Seleccionar Nivel Básico</button>
+                </div>
+                
+                <div class="module-card" id="intermediateLevel">
+                    <h3>Nivel Intermedio</h3>
+                    <p>Profundiza en temas más avanzados.</p>
+                    <button class="level-btn" onclick="redirectToModules('intermediate')">Seleccionar Nivel Intermedio</button>
+                </div>
+            </section>
+
+            <!-- Sección para ver el ranking de estudiantes -->
+            <section class="ranking-section">
+                <h2>Ranking de Estudiantes</h2>
+                <p>Consulta el ranking general de los estudiantes.</p>
+                <button class="btn" onclick="redirectToRanking()">Ver Ranking</button>
+            </section>
+
+            <!-- Sección para ver la lista de estudiantes -->
+            <section class="students-section">
+                <h2>Lista de Estudiantes</h2>
+                <p>Revisa la lista de estudiantes inscritos y su progreso.</p>
+                <button class="btn" onclick="redirectToStudents()">Ver Lista de Estudiantes</button>
+            </section>
+        </main>
+    </div>
+
+    <script src="/js/api.js" type="module" defer></script> <!-- Cliente API para comunicación con backend -->
+    <script>
+        // Función para redirigir a la vista unificada de módulos correspondiente
+        function redirectToModules(level) {
+            window.location.href = `/profesor/modulos/${level}`; // Nueva ruta para la vista unificada de módulos
+        }
+
+        // Función para redirigir a la vista del ranking
+        function redirectToRanking() {
+            window.location.href = '/ranking'; // Nueva ruta para la vista del ranking
+        }
+
+        // Función para redirigir a la vista de la lista de estudiantes
+        function redirectToStudents() {
+            window.location.href = '/estudiantes'; // Nueva ruta para la lista de estudiantes
+        }
+
+        // Cerrar sesión
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+            localStorage.removeItem('token');  
+            window.location.href = '/login';   
+        });
+    </script>
+</body>
+</html>

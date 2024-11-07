@@ -37,14 +37,14 @@ CREATE TABLE ADMINISTRADOR (
 );
 
 CREATE TABLE MODULO (
-    id INT PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY,
     nivel INT,
     nombre VARCHAR(100),
     teoria VARCHAR(1000)
 );
 
 CREATE TABLE EJERCICIO (
-    id INT PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY,
     nivel INT,
     enunciado TEXT,
     solucion_esperada TEXT,

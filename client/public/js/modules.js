@@ -32,4 +32,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     } catch (error) {
         console.error('Error al cargar los módulos:', error);
     }
+      // Evento de logout
+      document.getElementById('logoutBtn').addEventListener('click', () => {
+        localStorage.removeItem('token');
+        window.location.href = '/login'; 
+    });
 });

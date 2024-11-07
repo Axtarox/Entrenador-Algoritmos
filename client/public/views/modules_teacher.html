@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Módulos</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="/js/modules_teacher.js" type="module" defer></script>
+    <script src="/js/api.js" type="module" defer></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Gestión de Módulos</h1>
+            <button id="logoutBtn" class="btn">Cerrar Sesión</button>
+        </header>
+        <main>
+            <section id="module-management">
+                <h2 id="levelTitle"></h2>
+                <p id="levelDescription"></p>
+                <button id="addModuleBtn" class="btn">Agregar Módulo</button>
+                <div id="moduleList" class="module-grid" aria-live="polite"></div>
+            </section>
+            <!-- Modal para el formulario de agregar/editar módulo -->
+            <div id="moduleFormModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="formTitle">
+                <div class="modal-content">
+                    <form id="moduleForm">
+                        <input type="hidden" id="moduleId" name="id">
+                        <h2 id="formTitle">Agregar Módulo</h2>
+                        <label for="moduleName">Nombre del Módulo:</label>
+                        <input type="text" id="moduleName" name="nombre" required>
+                        <label for="moduleLevel">Nivel:</label>
+                        <select id="moduleLevel" name="nivel" required>
+                            <option value="1">Básico</option>
+                            <option value="2">Intermedio</option>
+                        </select>
+                        <label for="moduleTheory">Teoría:</label>
+                        <textarea id="moduleTheory" name="teoria" required></textarea>
+                        <div class="modal-buttons">
+                            <button type="submit" class="btn">Guardar</button>
+                            <button type="button" class="btn" id="cancelBtn">Cancelar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

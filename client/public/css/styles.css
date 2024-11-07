@@ -158,6 +158,44 @@ header h1 {
     border: 1px solid #ddd;
     border-radius: 8px;
 }
+/* Estilos para las secciones de nivel */
+.level-section {
+    margin-bottom: 20px;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+}
+
+.level-section h3 {
+    margin-bottom: 10px;
+}
+
+/* Estilos para el modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 500px;
+    width: 90%;
+    margin: auto;
+}
+
+.modal .btn {
+    margin-top: 10px;
+}
 
 
 /* Exercise styles

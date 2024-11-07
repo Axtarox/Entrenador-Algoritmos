@@ -1,57 +1,3 @@
-// Realiza la solicitud al servidor para iniciar sesión
-export const loginUser = async (email, password) => {
-    try {
-        const response = await fetch('/api/auth/login', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ correo: email, contrasena: password })
-        });
-        
-
-        if (!response.ok) {
-            const errorData = await response.json(); // Solo aquí
-            throw new Error(errorData.message || 'Error en el inicio de sesión');
-        }
-
-        const data = await response.json();
-        return data;
-    } catch (error) {
-        console.error('Error en loginUser:', error.message || error);
-        throw new Error(error.message || 'Error de red al iniciar sesión');
-    }
-};
-
-
-
-// Realiza la solicitud al servidor para registrar un usuario
-export const registerUser = async (name, email, password, institucionEducativa, nivelEstudios) => {
-    try {
-        const response = await fetch('/api/auth/register', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                nombre: name,
-                correo: email,
-                contrasena: password,
-                institucionEducativa, // Enviando institution
-                nivelEstudios,        // Enviando level
-                tipo: 'estudiante' // Tipo fijo para estudiante
-            })
-        });
-
-        if (!response.ok) {
-            const errorData = await response.json();
-            throw new Error(errorData.message || 'Error al registrar usuario');
-        }
-
-        const data = await response.json();
-        return data;
-    } catch (error) {
-        console.error('Error en registerUser:', error.message || error);
-        throw new Error(error.message || 'Error de red al registrar usuario');
-    }
-};
-
 export const getModulesByLevel = async (nivel) => {
     const token = localStorage.getItem('token');
     try {
@@ -72,7 +18,8 @@ export const getModulesByLevel = async (nivel) => {
         throw error;
     }
 };
-export const getModuleDetails = async (moduleId) => {
+
+export const getModuleById = async (moduleId) => {
     const token = localStorage.getItem('token');
     try {
         const response = await fetch(`/api/module/${moduleId}`, {
@@ -83,27 +30,77 @@ export const getModuleDetails = async (moduleId) => {
         });
 
         if (!response.ok) {
-            throw new Error('Error al obtener los detalles del módulo');
+            throw new Error('Error al obtener el módulo');
         }
 
         return await response.json();
     } catch (error) {
-        console.error('Error en getModuleDetails:', error);
+        console.error('Error en getModuleById:', error);
         throw error;
     }
 };
-export const getExerciseDetails = async (exerciseId) => {
+
+export const addModule = async (moduleData) => {
+    const token = localStorage.getItem('token');
     try {
-        const response = await fetch(`/api/exercises/${exerciseId}`);
+        const response = await fetch('/api/modules', {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(moduleData)
+        });
+
         if (!response.ok) {
-            throw new Error("Error al obtener los detalles del ejercicio");
+            throw new Error('Error al agregar el módulo');
         }
+
         return await response.json();
     } catch (error) {
-        console.error(error);
+        console.error('Error en addModule:', error);
         throw error;
     }
 };
 
+export const editModule = async (moduleData) => {
+    const token = localStorage.getItem('token');
+    try {
+        const response = await fetch(`/api/modules/${moduleData.id}`, {
+            method: 'PUT',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(moduleData)
+        });
 
+        if (!response.ok) {
+            throw new Error('Error al editar el módulo');
+        }
 
+        return await response.json();
+    } catch (error) {
+        console.error('Error en editModule:', error);
+        throw error;
+    }
+};
+
+export const deleteModule = async (moduleId) => {
+    const token = localStorage.getItem('token');
+    try {
+        const response = await fetch(`/api/modules/${moduleId}`, {
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error('Error al eliminar el módulo');
+        }
+    } catch (error) {
+        console.error('Error en deleteModule:', error);
+        throw error;
+    }
+};

@@ -14,7 +14,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const data = await loginUser(email, password);
             if (data.token) {
                 localStorage.setItem('token', data.token);
-                window.location.href = '/dashboard';
+                
+                // Redirigir según el tipo de usuario
+                if (data.tipo === 'profesor') {
+                    window.location.href = '/profesor/dashboard';
+                } else {
+                    window.location.href = '/dashboard';
+                }
             } else {
                 throw new Error('No se recibió un token de autenticación.');
             }
@@ -24,10 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-
 // Manejo del formulario de registro
-
-
 document.getElementById('registerForm')?.addEventListener('submit', async (e) => {
     e.preventDefault();  // Evitar que el formulario se envíe de forma normal
 
